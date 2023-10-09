@@ -11,7 +11,7 @@ const MORPH_WEIGHT_SIZE: usize = std::mem::size_of::<f32>();
 pub const MORPH_BUFFER_SIZE: usize = MAX_MORPH_WEIGHTS * MORPH_WEIGHT_SIZE;
 
 const JOINT_SIZE: usize = std::mem::size_of::<Mat4>();
-pub(crate) const JOINT_BUFFER_SIZE: usize = MAX_JOINTS * JOINT_SIZE;
+pub(crate) const JOINT_BUFFER_SIZE: usize = /* MAX_JOINTS * */ JOINT_SIZE;
 
 /// Individual layout entries.
 mod layout_entry {
@@ -20,8 +20,8 @@ mod layout_entry {
     use bevy_render::{
         render_resource::{
             binding_types::{sampler, texture_2d, texture_3d, uniform_buffer_sized},
-            BindGroupLayoutEntryBuilder, BufferSize, GpuArrayBuffer, SamplerBindingType,
-            ShaderStages, TextureSampleType,
+            BindGroupLayoutEntry, BindGroupLayoutEntryBuilder, BindingType, BufferBindingType,
+            BufferSize, GpuArrayBuffer, SamplerBindingType, ShaderStages, TextureSampleType,
         },
         renderer::RenderDevice,
     };
